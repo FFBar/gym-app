@@ -7,13 +7,13 @@
 </div>
 
 <div class="registration-form m-3 p-4">
-  <form>
+  <form [formGroup]="registerForm">
     <div class="row">
       <!--  Firstname    -->
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Firstname</mat-label>
-          <input formControlName="firstname" matInput placeholder="Firstname" />
+          <input formControlName="firstName" matInput placeholder="Firstname" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
@@ -21,7 +21,7 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Lastname</mat-label>
-          <input formControlName="lastname" matInput placeholder="Lastname" />
+          <input formControlName="lastName" matInput placeholder="Lastname" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
@@ -69,12 +69,43 @@
           <mat-hint>Unit is Centimeter</mat-hint>
         </mat-form-field>
       </div>
+      <!--  BMI   -->
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>BMI</mat-label>
+          <input
+            readonly
+            type="number"
+            formControlName="bmi"
+            matInput
+            placeholder="BMI"
+          />
+          <mat-icon matSuffix><i class="fa fa-sort-numeric-desc"></i></mat-icon>
+        </mat-form-field>
+      </div>
+      <!--  BMI Result   -->
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>BMI Result</mat-label>
+          <input
+            readonly
+            type="number"
+            formControlName="bmiResult"
+            matInput
+            placeholder="BMI Result"
+          />
+          <mat-icon matSuffix><i class="fa fa-check"></i></mat-icon>
+
+        </mat-form-field>
+      </div>
+
       <!--  Trainer   -->
       <div class="col-md-6 mt-3">
         <label class="example-radio-group-label"
           >Do you require a trainer?</label
         >
         <mat-radio-group
+          formControlName="requireTrainer"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
         >
@@ -92,6 +123,7 @@
       <div class="col-md-6 mt-3">
         <label class="example-radio-group-label">What is your Gender?</label>
         <mat-radio-group
+          formControlName="gender"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
         >
@@ -109,7 +141,7 @@
       <div class="col-md-6 mt-4">
         <mat-form-field appearance="outline">
           <mat-label>Select package</mat-label>
-          <mat-select>
+          <mat-select formControlName="package">
             <mat-option *ngFor="let package of packages" [value]="package">
               {{ package }}
             </mat-option>
@@ -120,7 +152,7 @@
       <div class="col-md-6 mt-4">
         <mat-form-field appearance="outline">
           <mat-label>Which of the following is important to you?</mat-label>
-          <mat-select multiple>
+          <mat-select formControlName="joinReason" multiple>
             <mat-option
               *ngFor="let joinReason of joinReasons"
               [value]="joinReason"
@@ -136,6 +168,7 @@
           >Have you ever been to a Gym before?</label
         >
         <mat-radio-group
+          formControlName="haveGymBefore"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
         >
@@ -153,7 +186,11 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Enquiry date</mat-label>
-          <input matInput [matDatepicker]="picker" />
+          <input
+            formControlName="enquiryDate"
+            matInput
+            [matDatepicker]="picker"
+          />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
@@ -163,5 +200,8 @@
         </mat-form-field>
       </div>
     </div>
+    <button (click)="submit()" mat-raised-button color="accent" class="mt-4">
+      Submit
+    </button>
   </form>
 </div>
