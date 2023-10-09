@@ -37,34 +37,10 @@
       <td mat-cell *matCellDef="let row">{{ row.mobile }}</td>
     </ng-container>
 
-    <!-- weight -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-      <td mat-cell *matCellDef="let row">{{ row.weight }}</td>
-    </ng-container>
-
-    <!-- height -->
-    <ng-container matColumnDef="height">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Height</th>
-      <td mat-cell *matCellDef="let row">{{ row.height }}</td>
-    </ng-container>
-
-    <!-- bmi -->
-    <ng-container matColumnDef="bmi">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>BMI</th>
-      <td mat-cell *matCellDef="let row">{{ row.bmi }}</td>
-    </ng-container>
-
     <!-- bmiResult -->
     <ng-container matColumnDef="bmiResult">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>BMI Result</th>
       <td mat-cell *matCellDef="let row">{{ row.bmiResult }}</td>
-    </ng-container>
-
-    <!-- requireTrainer -->
-    <ng-container matColumnDef="requireTrainer">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Require Trainer</th>
-      <td mat-cell *matCellDef="let row">{{ row.requireTrainer }}</td>
     </ng-container>
 
     <!-- gender -->
@@ -79,18 +55,6 @@
       <td mat-cell *matCellDef="let row">{{ row.package }}</td>
     </ng-container>
 
-    <!-- joinReason -->
-    <ng-container matColumnDef="joinReason">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Join Reason</th>
-      <td mat-cell *matCellDef="let row">{{ row.joinReason }}</td>
-    </ng-container>
-
-    <!-- haveGymBefore -->
-    <ng-container matColumnDef="haveGymBefore">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>First timer</th>
-      <td mat-cell *matCellDef="let row">{{ row.haveGymBefore }}</td>
-    </ng-container>
-
     <!-- enquiryDate -->
     <ng-container matColumnDef="enquiryDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>enquiry Date</th>
@@ -100,7 +64,7 @@
     <!-- action -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-      <td mat-cell *matCellDef="let row" class="d-flex justify-content-center">
+      <td mat-cell *matCellDef="let row" class="d-flex justify-content-start p-1">
         <button [routerLink]="['/detail', row.id]" mat-icon-button color="warn">
           <i class="fa fa-eye"></i>
         </button>
