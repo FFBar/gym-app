@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ApiService } from '../services/api/api.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-create-registration',
@@ -22,7 +24,11 @@ export class CreateRegistrationComponent implements OnInit {
   registerForm!: FormGroup;
 
   // FormBuilder is a service that provides syntactic sugar that shortens creating instances of a FormControl, FormGroup, or FormArray
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private api: ApiService,
+    private toastService: NgToastService,
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -44,8 +50,15 @@ export class CreateRegistrationComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.registerForm.value);
     this.calculateBMI();
+    this.api.postRegistration(this.registerForm.value).subscribe((res) => {
+      this.toastService.success({
+        detail: 'Success',
+        summary: 'Enquiry added',
+        duration: 3000,
+      });
+      this.registerForm.reset();
+    });
   }
 
   calculateBMI() {
