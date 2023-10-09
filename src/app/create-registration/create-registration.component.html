@@ -200,8 +200,11 @@
         </mat-form-field>
       </div>
     </div>
-    <button (click)="submit()" mat-raised-button color="accent" class="mt-4">
+    <button (click)="submit()" *ngIf="!isUpdate" mat-raised-button color="accent" class="mt-4">
       Submit
+    </button>
+    <button (click)="update()" *ngIf="isUpdate" mat-raised-button color="accent" class="mt-4">
+      Update
     </button>
   </form>
 </div>

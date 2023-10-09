@@ -1,60 +1,81 @@
 {
   "enquiry": [
     {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "asdg@gmail.com",
-      "mobile": "986798",
-      "weight": 99,
-      "height": 1.99,
-      "bmi": "25.00",
-      "bmiResult": "Normal",
-      "requireTrainer": "",
-      "gender": "",
-      "package": "",
-      "joinReason": "",
-      "haveGymBefore": "",
-      "enquiryDate": "",
-      "id": 1
-    },
-    {
-      "firstName": "Jane",
-      "lastName": "Blubb",
-      "email": "ölhbö@klug",
-      "mobile": "09178907",
-      "weight": 88,
-      "height": 1.88,
-      "bmi": "24.90",
-      "bmiResult": "Normal",
+      "firstName": "Janelle",
+      "lastName": "Welch",
+      "email": "98658@gmail.com",
+      "mobile": "942-873-8127",
+      "weight": 44,
+      "height": 561,
+      "bmi": "0.00",
+      "bmiResult": "Underweight",
       "requireTrainer": "Yes",
       "gender": "Male",
-      "package": "Quarterly",
-      "joinReason": [
-        "Toxic Fat reduction",
-        "Muscle Gain"
-      ],
-      "haveGymBefore": "No",
-      "enquiryDate": "2023-10-27T22:00:00.000Z",
-      "id": 2
-    },
-    {
-      "firstName": "dsfrztdsfhz",
-      "lastName": "hsdafhzgsdf",
-      "email": "sdfghsdf",
-      "mobile": "345435",
-      "weight": 88,
-      "height": 1.55,
-      "bmi": "36.63",
-      "bmiResult": "Obese",
-      "requireTrainer": "No",
-      "gender": "Female",
       "package": "Half Yearly",
       "joinReason": [
+        "Weight Gain",
         "Muscle Gain"
       ],
       "haveGymBefore": "Yes",
-      "enquiryDate": "2023-10-27T22:00:00.000Z",
+      "enquiryDate": "2023-10-29T10:22:25.000Z",
       "id": 3
+    },
+    {
+      "firstName": "Raquel",
+      "lastName": "Armstrong",
+      "email": "32502@gmail.com",
+      "mobile": "606-844-5908",
+      "weight": 92,
+      "height": 205,
+      "bmi": "0.00",
+      "bmiResult": "Underweight",
+      "requireTrainer": "Yes",
+      "gender": "Female",
+      "package": "Half Yearly",
+      "joinReason": [
+        "Muscle Gain",
+        "General Fitness",
+        "Others"
+      ],
+      "haveGymBefore": "No",
+      "enquiryDate": "2023-04-24T00:56:44.000Z",
+      "id": 4
+    },
+    {
+      "firstName": "Verla",
+      "lastName": "Stanton",
+      "email": "14278@gmail.com",
+      "mobile": "393-137-6065",
+      "weight": 74,
+      "height": 349,
+      "bmi": "0.00",
+      "bmiResult": "Underweight",
+      "requireTrainer": "Yes",
+      "gender": "Female",
+      "package": "Monthly",
+      "joinReason": [
+        "Toxic Fat reduction"
+      ],
+      "haveGymBefore": "Yes",
+      "enquiryDate": "2024-02-03T06:49:18.000Z",
+      "id": 5
+    },
+    {
+      "firstName": "Julian",
+      "lastName": "Wolf",
+      "email": "36670@gmail.com",
+      "mobile": "032-772-4479",
+      "weight": 615,
+      "height": 363,
+      "bmi": "0.00",
+      "bmiResult": "Underweight",
+      "requireTrainer": "Yes",
+      "gender": "Male",
+      "package": null,
+      "joinReason": null,
+      "haveGymBefore": "Yes",
+      "enquiryDate": "2024-08-29T01:03:11.000Z",
+      "id": 7
     }
   ]
 }

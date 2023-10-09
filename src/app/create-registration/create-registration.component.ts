@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../services/api/api.service';
 import { NgToastService } from 'ng-angular-popup';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-create-registration',
@@ -22,12 +24,16 @@ export class CreateRegistrationComponent implements OnInit {
 
   // Tracks the value and validity state of a group of FormControl instances
   registerForm!: FormGroup;
+  userIdToUpdate!: number;
+  isUpdate: boolean = false;
 
   // FormBuilder is a service that provides syntactic sugar that shortens creating instances of a FormControl, FormGroup, or FormArray
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
     private toastService: NgToastService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -47,10 +53,25 @@ export class CreateRegistrationComponent implements OnInit {
       haveGymBefore: [''],
       enquiryDate: [''],
     });
+
+    // use the ActivatedRoute service to retrieve the parameters for the route
+    this.activatedRoute.params.subscribe((value) => {
+      this.userIdToUpdate = value['id'];
+      //   set the state of the form to update
+
+      if (this.userIdToUpdate) {
+        this.isUpdate = true;
+        //   get the user-data from the api
+        this.api.getRegisteredUserById(this.userIdToUpdate).subscribe((res) => {
+          this.fillFormToUpdate(res);
+        });
+      }
+    });
   }
 
   submit() {
     this.calculateBMI();
+    console.log(this.registerForm.value);
     this.api.postRegistration(this.registerForm.value).subscribe((res) => {
       this.toastService.success({
         detail: 'Success',
@@ -59,6 +80,21 @@ export class CreateRegistrationComponent implements OnInit {
       });
       this.registerForm.reset();
     });
+  }
+
+  update() {
+    this.calculateBMI();
+    this.api
+      .updateRegisteredUser(this.registerForm.value, this.userIdToUpdate)
+      .subscribe((res) => {
+        this.toastService.success({
+          detail: 'Success',
+          summary: 'Enquiry updated',
+          duration: 3000,
+        });
+        this.registerForm.reset();
+        this.router.navigate(['list']);
+      });
   }
 
   calculateBMI() {
@@ -90,4 +126,8 @@ export class CreateRegistrationComponent implements OnInit {
       this.registerForm.controls['bmi'].patchValue('Invalid');
     }
   }
+  fillFormToUpdate(user: User) {
+    this.registerForm.patchValue(user);
+  }
 }
+

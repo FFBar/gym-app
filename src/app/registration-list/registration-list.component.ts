@@ -4,6 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { User } from '../models/user.model';
 import { ApiService } from '../services/api/api.service';
+import { Router } from '@angular/router';
+import { NgConfirmService } from 'ng-confirm-box';
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-registration-list',
@@ -29,13 +32,18 @@ export class RegistrationListComponent implements OnInit {
     'joinReason',
     'haveGymBefore',
     'enquiryDate',
-    'action'
+    'action',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private confirm: NgConfirmService,
+    private toastService: NgToastService,
+  ) {}
 
   getUsers() {
     //   get the users-data from the api
@@ -61,5 +69,26 @@ export class RegistrationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
+  }
+
+  edit(id: number) {
+    this.router.navigate(['update', id]);
+  }
+
+  delete(id: number) {
+    this.confirm.showConfirm(
+      'Are you sure to delete?',
+      () => {
+        this.api.deleteRegisteredUser(id).subscribe((res) => {
+          this.getUsers();
+          this.toastService.success({
+            detail: 'Success',
+            summary: 'Enquiry deleted',
+            duration: 3000,
+          });
+        });
+      },
+      () => {},
+    );
   }
 }
