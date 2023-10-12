@@ -1,1 +1,71 @@
-<p>user-detail works!</p>
+<mat-card class="example-card" *ngIf="user">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{user.firstName + ' ' +  user.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem"
+        ><div matLine>
+          Weight:
+          <button mat-button>{{ user.weight + ' Kg'}}</button>
+        </div> </mat-list-item
+      ><mat-list-item role="listitem"
+        ><div matLine>
+          Height:
+          <button mat-button>{{ user.height + ' m'}}</button>
+        </div> </mat-list-item
+      ><mat-list-item role="listitem"
+        ><div matLine>
+          BMI:
+          <button mat-button>{{user.bmi}}</button>
+        </div> </mat-list-item
+      ><mat-list-item role="listitem"
+        ><div matLine>
+          BMI Result:
+          <button mat-button>{{user.bmiResult}}</button>
+        </div> </mat-list-item
+      ><mat-list-item role="listitem"
+        ><div matLine>
+          Trainer required:
+          <button mat-button>{{user.requireTrainer}}</button>
+        </div> </mat-list-item
+      ><mat-list-item role="listitem"
+        ><div matLine>
+          Gender:
+          <button mat-button>{{user.gender}}</button>
+        </div> </mat-list-item
+      ><mat-list-item role="listitem"
+        ><div matLine>
+          Package:
+          <button mat-button>{{user.package}}</button>
+        </div>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><div matLine>
+          Goals:
+          <button mat-button disabled>
+            <mat-chip-listbox aria-label="Goals selection">
+              <ng-container *ngFor="let goal of user.joinReason">
+                <mat-chip-option color="primary" selected>{{ goal }}</mat-chip-option>
+              </ng-container>
+            </mat-chip-listbox>
+          </button>
+        </div>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><div matLine>
+          Have you been in a gym before?
+          <button mat-button>{{user.haveGymBefore}}</button>
+        </div>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><div matLine>
+          Enquiry Date:
+          <button mat-button>{{user.enquiryDate | date:'longDate'}}</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
