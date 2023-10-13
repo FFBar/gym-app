@@ -26,6 +26,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -36,6 +37,7 @@ import {MatChipsModule} from '@angular/material/chips';
     CreateRegistrationComponent,
     RegistrationListComponent,
     UserDetailComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
