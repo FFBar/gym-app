@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../services/api/api.service';
 import { NgToastService } from 'ng-angular-popup';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -37,22 +37,27 @@ export class CreateRegistrationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      mobile: [''],
-      weight: [''],
-      height: [''],
-      bmi: [''],
-      bmiResult: [''],
-      requireTrainer: [''],
-      gender: [''],
-      package: [''],
-      joinReason: [''],
-      haveGymBefore: [''],
-      enquiryDate: [''],
-    });
+    this.registerForm = this.fb.group(
+      {
+        // q: difference between formControlName and formControl
+        // a: formControlName is used in template-driven forms, formControl is used in reactive forms
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        mobile: [''],
+        weight: [''],
+        height: [''],
+        bmi: [''],
+        bmiResult: [''],
+        requireTrainer: [''],
+        gender: [''],
+        package: [''],
+        joinReason: [''],
+        haveGymBefore: [''],
+        enquiryDate: [''],
+      },
+      { updateOn: 'blur' },
+    );
 
     // use the ActivatedRoute service to retrieve the parameters for the route
     this.activatedRoute.params.subscribe((value) => {
@@ -130,4 +135,3 @@ export class CreateRegistrationComponent implements OnInit {
     this.registerForm.patchValue(user);
   }
 }
-

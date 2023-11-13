@@ -15,6 +15,11 @@
           <mat-label>Firstname</mat-label>
           <input formControlName="firstName" matInput placeholder="Firstname" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error
+            *ngIf="registerForm.get('firstName')?.hasError('required')"
+          >
+            Firstname is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <!--  Lastname    -->
@@ -23,6 +28,9 @@
           <mat-label>Lastname</mat-label>
           <input formControlName="lastName" matInput placeholder="Lastname" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error *ngIf="registerForm.get('lastName')?.hasError('required')">
+            Lastname is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <!--  Email    -->
@@ -31,6 +39,19 @@
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput placeholder="Email" />
           <mat-icon matSuffix>alternate_email</mat-icon>
+          <mat-error
+            *ngIf="
+              registerForm.get('email')?.hasError('email') &&
+              !registerForm.get('email')?.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error
+            *ngIf="registerForm.get('email')?.hasError('required')"
+          >
+            Email address is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <!--  Mobile    -->
@@ -95,7 +116,6 @@
             placeholder="BMI Result"
           />
           <mat-icon matSuffix><i class="fa fa-check"></i></mat-icon>
-
         </mat-form-field>
       </div>
 
@@ -197,10 +217,23 @@
         </mat-form-field>
       </div>
     </div>
-    <button (click)="submit()" *ngIf="!isUpdate" mat-raised-button color="accent" class="mt-4">
+    <button
+      (click)="submit()"
+      [disabled]="registerForm.invalid"
+      *ngIf="!isUpdate"
+      mat-raised-button
+      color="primary"
+      class="mt-4"
+    >
       Submit
     </button>
-    <button (click)="update()" *ngIf="isUpdate" mat-raised-button color="accent" class="mt-4">
+    <button
+      (click)="update()"
+      *ngIf="isUpdate"
+      mat-raised-button
+      color="accent"
+      class="mt-4"
+    >
       Update
     </button>
   </form>

@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <button routerLink="/register" mat-raised-button color="accent">
+  <button routerLink="/register" mat-raised-button color="primary">
     <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Registration
   </button>
   <mat-form-field appearance="outline">
@@ -79,13 +79,13 @@
         *matCellDef="let row"
         class="d-flex justify-content-start p-1"
       >
-        <button [routerLink]="['/detail', row.id]" mat-icon-button color="warn">
+        <button [routerLink]="['/detail', row.id]" mat-icon-button color="primary">
           <i class="fa fa-eye"></i>
         </button>
         <button (click)="edit(row.id)" mat-icon-button color="accent">
           <i class="fa fa-pencil"></i>
         </button>
-        <button (click)="delete(row.id)" mat-icon-button color="primary">
+        <button (click)="delete(row.id)" mat-icon-button color="warn">
           <i class="fa fa-trash"></i>
         </button>
       </td>
